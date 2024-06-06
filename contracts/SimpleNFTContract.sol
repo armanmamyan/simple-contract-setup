@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.20;
 
 import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
@@ -40,7 +40,7 @@ contract SimpleNFTContract is ERC721A, ReentrancyGuard, Ownable {
     constructor(
         string memory baseURI,
         bytes32 _merkleRoot
-    ) ERC721A("NAME_WITH_SPACING", "CONTRACT_SHORT_NAME") {
+    ) ERC721A("NAME_WITH_SPACING", "CONTRACT_SHORT_NAME") Ownable(msg.sender) {
         setBaseURI(baseURI);
         setMerkleRootHash(_merkleRoot);
     }
